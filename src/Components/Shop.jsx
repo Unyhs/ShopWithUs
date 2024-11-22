@@ -7,6 +7,7 @@ import axios from 'axios';
 import productFetch from '../Redux/ProductFetch';
 import { useParams } from 'react-router-dom';
 import { Spin } from 'antd';
+import {ExclamationCircleOutlined} from '@ant-design/icons'
 
 
 const actions=cartSlice.actions;
@@ -53,7 +54,10 @@ const Shop = () => {
 
   if(status==Statuses.ERROR)
     return (
-      <h1>Facing an Error!</h1>
+      <div style={{ textAlign: 'center', marginTop: '15%'}}>
+          <ExclamationCircleOutlined />
+          <h1>Something went wrong, please check again.</h1>
+      </div>
     );
 
   return (
