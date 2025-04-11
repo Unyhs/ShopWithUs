@@ -2,7 +2,7 @@ import React, { useState,useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import productFetch from '../Redux/ProductFetch'
 import { Spin } from 'antd'
-import {ExclamationCircleOutlined} from '@ant-design/icons'
+import {ExclamationCircleOutlined, LeftOutlined,RightOutlined} from '@ant-design/icons'
 
 const Carousel = () => {
     const prodList=useSelector(store=>store.prodState.prodList)
@@ -47,17 +47,17 @@ const Carousel = () => {
         </div>)
 
   return (
-    <div className='flex justify-center bg-gradient-to-r from-gray-900 to-gray-400 border-0 rounded-xl'>
-      <div className='flex h-[40vh] w-[40vw] justify-between items-center border-0 drop-shadow-xl rounded-xl'>
-        <button className='p-5 text-2xl' onClick={prevItem}>{`<`}</button>
-        <div className='p-5 flex bg-center bg-contain bg-no-repeat h-[20vh] w-[20vw]' 
+    <div className='carousel'>
+      <div className='carousel-box relative'>
+        <button className='carousel-box-left-button' onClick={prevItem}><LeftOutlined /></button>
+        <div className='carousel-box-image' 
         style={{backgroundImage:`url(${prodList[currentItem].image})`}}>
         </div>
-        <div>
-          <div className='p-5 text-2xl text-white'>{prodList[currentItem].title}</div>
-          <div className='p-5 text-2xl text-white'>{`$ ${prodList[currentItem].price}`}</div>
+        <div className='mx-5'>
+          <div className='carousel-box-item'>{prodList[currentItem].title}</div>
+          <div className='carousel-box-price'>{`$ ${prodList[currentItem].price}`}</div>
         </div>
-        <button className='p-5 text-2xl' onClick={nextItem}>{`>`}</button>
+        <button className='carousel-box-right-button' onClick={nextItem}><RightOutlined /></button>
       </div>
     </div>
   )

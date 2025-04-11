@@ -1,12 +1,21 @@
 import React from 'react'
+import {MinusOutlined,PlusOutlined} from '@ant-design/icons'
+import { Button } from 'antd'
 
-const ProductCard = ({prod,handleAddToCart}) => {
+const ProductCard = ({prod,handleAddToCart,handleRemoveFromCart,getQuantity}) => {
+
+  let quantity=getQuantity(prod)  
   return ( 
-    <div className='h-[40vh] w-[15vw] shadow-xl flex flex-col items-center rounded-xl' key={prod.id}>
-        <img className='h-[30vh] w-[10vw] rounded-xl bg-cover bg-center hover:cursor-pointer'src={prod.image} alt="Image" />
-        <div className='w-[14vw] truncate text-ellipsis'>{prod.title}</div>
-        <div>Price:${prod.price}</div>
-        <button className='bg-red-900 w-[100px] text-white rounded-xl' onClick={()=>handleAddToCart(prod)}>Add to Cart</button>
+    <div className='product-card' key={prod.id}>
+        <img className='product-card-image'src={prod.image} alt="Image" />
+        <div className='product-card-title'>{prod.title}</div>
+        <div className='product-card-price'>${prod.price}</div>
+        <div className='flex justify-center mt-4'>
+          <Button className='product-card-button-remove' onClick={()=>handleRemoveFromCart(prod)}><MinusOutlined /></Button>
+          <p className='product-card-quantity'>{quantity}</p>
+          <Button className='product-card-button-add' onClick={()=>handleAddToCart(prod)}><PlusOutlined /></Button>     
+        </div>
+        
     </div>
   )
 }

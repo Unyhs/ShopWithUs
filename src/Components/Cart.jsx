@@ -2,9 +2,9 @@ import React,{useState} from 'react'
 import cartSlice from '../Redux/CartSlice'
 import {useSelector,useDispatch} from 'react-redux'
 import { categories } from './Shop';
-import { useNavigate } from 'react-router-dom';
-import { Table,Button, Form,Input, message, Card } from 'antd';
-import {MinusOutlined,PlusOutlined,CloseOutlined} from '@ant-design/icons'
+import { Link, useNavigate } from 'react-router-dom';
+import { Table,Button, Form,Input,ConfigProvider,FloatButton} from 'antd';
+import {MinusOutlined,PlusOutlined,CloseOutlined,UpOutlined, ShoppingCartOutlined} from '@ant-design/icons'
 
 const offers=["10 off","eoss","black friday"]
 const {addToCart,removeFromCart,updateCart,addCoupon,removeCoupon}=cartSlice.actions;
@@ -14,7 +14,6 @@ const Cart = () => {
   const coupons=useSelector((store)=>store.cartState.coupons);
   const nav=useNavigate()
   const dispatch=useDispatch()
-
 
   const handleRemove=(prod)=>{
     dispatch(removeFromCart(prod));
@@ -51,24 +50,27 @@ const Cart = () => {
     return sum.toFixed(2)
   }
 
-  const tableHeaders=[{title:"",dataIndex:"poster",render:((text,data)=>
-    (<img 
+  const tableHeaders=[
+  {title:"Product Description", dataIndex:"title",render:((text,data)=>
+    (<div className='flex items-center max-w-lg'>
+      <img 
       src={data.image}
       alt='image'
-      style={{objectFit:'cover'}}
-      height="75" 
-      width="60"/>)
+      className='cart-product-thumbnail'/>
+
+      <span className='ml-4'>{data.title}</span>
+      </div>
+      )
     )},
-  {title:"Product Name", dataIndex:"title"},
-  {title:"Price", dataIndex:"price",render:(text)=>`$ ${text}`},
-  {title:"Quantity", dataIndex:"quantity"},
-  {title:"Amount", dataIndex:"genre",render:((text,data)=>
+  {title:"Price ($)", dataIndex:"price",render:(text)=><span>{text}</span>},
+  {title:"No.", dataIndex:"quantity"},
+  {title:"Amount ($)", dataIndex:"genre",render:((text,data)=>
     (<span>
       {data.price*data.quantity}
     </span>)
     )},
   {title:"Action",render:(text,data)=>(
-    <>
+    <div className='flex'>
       <Button onClick={()=>{
           handleRemove(data)
         }}>
@@ -79,46 +81,54 @@ const Cart = () => {
         }}>
       <PlusOutlined />
       </Button>
-    </>
+    </div>
   )}]
 
 
   if(cartList.length===0)
     return (
-    <>
-    <div className='text-2xl mt-40'>Your cart is empty.</div>
-
-    <div>
-      <div className='text-2xl mt-20'>Explore our products from all categories : </div>
-      <div className='flex justify-center gap-8 mt-10'>
-      {categories.map(cat=>(
-      <div key={cat} className='h-[15vh] w-[15vw] ring-red-900 text-xl text-gray-900 flex justify-center items-center rounded-2xl ring-2 cursor-pointer' 
-      onClick={()=>{
-        nav(`/Shop/${cat}`)
-      }}>
-        {cat}
-      </div>))}
-      </div>
+    <div className='mt-60 text-my-custom-purple'>
+      <p className="exclamation mt-20 text-7xl"><ShoppingCartOutlined /></p>
+      <p className='text-4xl mt-4'>Your cart is empty.</p>
+      <p className='text-xl mt-8 text-blue-500 underline'><Link to={'/shop'}>Click to continue shopping</Link></p>
     </div>
-    </>
   )
 
   return(
-    <div className='flex flex-col justify-center items-center'>
+    <div className='cart'>
+      <FloatButton icon={<UpOutlined />} onClick={()=>{ window.scrollTo({ top: 0, behavior: 'smooth' });}}>Go to Top </FloatButton>
+      <ConfigProvider
+        theme={{
+          token:{
+            colorText:'#490b3d',
+            fontFamily:'Baloo 2',
+          }
+          }}
+      >
       <Table 
       rowKey={"id"}
-      className='mt-20 w-[80vw]'
+      className='cart-table'
       dataSource={cartList} 
       columns={tableHeaders} 
       footer={()=>(<div>
-        
-        <span className='mx-5'>No of Items: {calcSumQuantity()} </span>
-
-        <span className='mx-5'> Order Total: ${calcSumAmount()} </span>
+        <span className='cart-footer'>No of Items: {calcSumQuantity()} </span>
+        <span className='cart-footer'> Order Total: ${calcSumAmount()} </span>
       </div>)} />
+      </ConfigProvider>
 
       <div>
-        <Form onFinish={handleSubmit}
+      <ConfigProvider
+        theme={{
+          token:{
+            colorText:'#490b3d',
+            fontFamily:'Baloo 2',
+            fontSize:'100%'
+          }
+          }}
+      >
+        <Form 
+        onFinish={handleSubmit}
+        className='couponBox'
         layout='inline'>
         <Form.Item 
           label="Coupon Code" 
@@ -142,28 +152,37 @@ const Cart = () => {
             
           <Input placeholder="Enter the coupon code"/>
         </Form.Item>
-          <Button 
-          type="primary"
+
+          <Button
+          className='saveMoneyButton'
           htmlType="Submit"
-          >Save me some money!
+          >Submit
           </Button>
+
         </Form>
+        </ConfigProvider>
+
         <div className='flex justify-center'>
           {coupons.map((cou)=>(
             <div key={cou} className='p-2 my-2'>
-            <span className='border-2 p-2 border-dashed bg-gray-100 hover:bg-red-600 text-xs'>
+            <span className='border-2 p-2 border-dashed bg-my-custom-gold hover:bg-red-600 text-xs'>
               {cou.toUpperCase()}  <span onClick={()=>{handleRemoveCoupon(cou)}}><CloseOutlined /></span>
             </span>
             </div>
           ))}  
         </div>
-      </div>
-      <div>
-        <Button type='primary' className='p-2 m-5' onClick={()=>{
+        
+        <Button
+        className='placeOrderButton' 
+        onClick={()=>{
           nav('/')
           window.location.reload()
-        }}>Place my Order</Button>
+        }}>
+            Place my Order
+        </Button>
+
       </div>
+      
     </div>
   )
 }

@@ -2,40 +2,505 @@
   margin: 0 auto;
   padding: 0 auto;
   text-align: center;
+  height: 100%;
+}
+
+#app{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#app .ant-btn:hover{
+  color: #d4a837;
+  border-color: #d4a837;
+}
+
+#app .ant-pagination-item-active{
+  color: #d4a837;
+  border-color: #d4a837;
+}
+
+.Baloo2-500{
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 500;
+  font-size: 150%;
+}
+
+.navbar{
+  width: 100%;
+  height: 10%;
+  position: fixed;
+  z-index: 25;
+  background-color:#490b3d;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.navbar-box{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-menu{
+  display: flex;
+  align-items: center;
+  font-family: "Baloo 2", sans-serif;
+  width: 100%;
+  font-weight: 500;
+  font-size: 120%;
+  gap: 2rem;
+  padding: 1%;
+  color: white;
+}
+
+.navbar-menu-portrait{
+  display: none;
+  align-items: center;
+  font-family: "Baloo 2", sans-serif;
+  width: 100%;
+  font-weight: 500;
+  font-size: 120%;
+  gap: 2rem;
+  padding: 1%;
+  color: white;
+}
+
+.navbar-cart{
+  width: 5%;
+  height: 120%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 500;
+  font-size: 140%;
+  color: white;
+  background-color: #d4a837;
+}
+
+.navbar-cart-link{
+  height: 120%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logobox{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  position: relative;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logo-span{
+  position: absolute;
+  top: 40%;
+  left:0%;
+  font-size: 200%;
+  font-weight: 700;
+  color:#4a5fc1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.home{
+  font-family: "Baloo 2", sans-serif;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  background-image: linear-gradient(to bottom,#eba63f,#d4a837,#e0e0e0);
+  height: 100%;
+  padding-bottom: 2rem;
+  --tw-drop-shadow: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+}
+
+.home-offer-title{
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 500;
+  font-size: 200%;
+  color: white;
+}
+
+.home-carousel{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 80%;
+}
+
+.carousel{
+  display: flex;
+  justify-content: center;
+  border-radius: 0px;
+  border-radius: 0.75rem;
+  width: 70%;
+  height: 80%;
+  margin-top: 5%;
+}
+
+.carousel-box{
+  display: flex;
+  height: 40vh;
+  width: fit-content;
+  align-items: center;
+}
+
+.carousel-box-image{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 300px;
+  width: 300px;
+}
+
+.carousel-box-left-button{
+  color: white;
+  font-size: 100%;
+  position: absolute;
+  left: -10%;
+}
+
+.carousel-box-right-button{
+  color: white;
+  font-size: 100%;
+  position: absolute;
+  right: -10%;
+}
+
+.carousel-box-item{
+  color: white;
+  font-size: 100%;
+  font-family: "Baloo 2", sans-serif;
+}
+
+.carousel-box-price{
+  color: white;
+  font-size: 100%;
+  font-family: "Baloo 2", sans-serif;
 }
 
 .card {
-  padding: 2em;
+  font-family: "Baloo 2", sans-serif;
+  padding: 2rem;
 }
 
-.read-the-docs {
-  color: #888;
+.offer-card-title{
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 900;
+  font-size: 150%;
+  color: #d4a837;
+}
+
+.offer-card-desc{
+  font-family: "Baloo 2", sans-serif;
+  font-size:100%;
+  color:#490b3d;
+}
+
+
+.shop{
+  font-family: "Baloo 2", sans-serif;
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  padding: 5%;
+}
+
+.shop-categories{
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.category-card{
+  padding: 2%;
+  border-radius: 5%;
+}
+
+.category-card:hover{
+  cursor: pointer;
+  scale: 1.1;
+}
+
+.shop-items{
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  gap:3rem;
+  margin-top: 5%;
+  justify-content: center;
+}
+
+.empty-shop{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-menu .ant-menu-light.ant-menu-horizontal > .ant-menu-item:hover::after{
+  border-bottom: none !important;
+}
+
+.navbar-menu .ant-menu-light.ant-menu-horizontal > .ant-menu-item:hover{
+  color: #d4a837 !important;
+}
+
+.navbar-menu .ant-menu-item-selected {
+  color: none !important; /* Override font color */
+  border-bottom: none!important; /* Override bottom border */
+}
+
+.navbar-menu .ant-menu-item-selected::after {
+  color: none !important; /* Override font color */
+  border-bottom: none!important; /* Override bottom border */
+}
+
+.ant-menu-item-selected a {
+  color:#d4a837 !important; /* Change to your desired color */
+}
+
+.cart{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  font-family: "Baloo 2", sans-serif;
+  width: 80%;
+}
+
+.cart-table{
+  width: 100%;
+}
+
+.cart .ant-table-cell {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 150%;
+}
+
+.cart .ant-table-thead > tr > th {
+  font-size: 175%;
+}
+
+.cart-footer{
+  margin:3%;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 150%;
+}
+
+.cart-product-thumbnail{
+  object-fit: cover;
+  height: 100px;
+  width: 100px;
+}
+
+.placeOrderButton{
+  padding: 5%;
+  margin: 5%;
+  background-color: #490b3d;
+  color: white;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 150%;
+}
+
+.saveMoneyButton{
+  background-color: #490b3d;
+  color: white;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 100%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.couponBox.ant-form-inline{
+ flex-wrap: nowrap;
+}
+
+.offer-card-box{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));	
+}
+
+.navbar-menu-portrait .ant-dropdown-menu .ant-dropdown-menu-item {
+  color: #490b3d !important;
+}
+
+.product-card{
+  --tw-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1%;
+  height: 30%;
+  width: 20%;
+  padding: 2%;
+}
+
+.product-card:hover{
+  scale: 1.1;
+  animation-duration: 200ms;
+}
+
+.product-card-image{
+  border-radius: 5%;
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  width: auto;
+}
+
+.product-card-title{
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;  
+  color: #490b3d;
+}
+
+.product-card-price{
+  color: #490b3d;
+}
+
+.product-card-button-remove{
+  color: #490b3d;
+  width: 20%;
+  font-size: 100%;
+}
+
+.product-card-button-add{
+  color: #490b3d;
+  width: 20%;
+  font-size: 100%;
+}
+
+.product-card-quantity{
+  color: #490b3d;
+  width: 30px;
+  font-size: 125%;
+  border-radius: 5%;
+}
+
+@media (orientation:portrait)
+{
+  .navbar-menu{
+    display: none;
+  }
+
+  .navbar-menu-portrait{
+    display: flex;
+    align-items: center;
+  }
+  .navbar-cart{
+    width: 20%;
+    height: 100%;
+    font-size: 100%;
+  }
+
+  .home{
+    width: 80%;
+    margin-top: 25%;
+  }
+
+  .home-offer-title{
+    font-size: 150%;
+  }
+
+  .carousel-box{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .carousel-box-left-button{
+    top:30%
+  }
+
+  .carousel-box-right-button{
+    top:30%
+  }
+
+  .carousel-box-item{
+    margin-top: 7%;
+    text-overflow: ellipsis;
+    font-size: 120%;
+  }
+  
+  .carousel-box-price{
+    font-size: 120%;
+  }
+
+  .carousel-box-image{
+    height: 200px;
+    width: 200px;
+  }
+
+  .carousel{
+    margin-top: 10%;
+  }
+
+  .offer-card-box{
+    display: none;
+  }
+
+  .cart{
+    width: 100%;
+    margin-top: 25%;
+  }
+
+  .cart-table{
+    width: 90%;
+  }
+
+  .cart .ant-table-cell {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 90%;
+  }
+
+  .cart .ant-table-thead > tr > th {
+    font-size: 90%;
+  }
+
+  .cart-footer{
+    font-size: 100%;
+  }
+
+  .cart-product-thumbnail{
+    object-fit: cover;
+    height: 50px;
+    width: 30px;
+  }
+
+  .shop{
+    margin-top: 25%;
+  }
+
+  .navbar-menu-portrait .ant-dropdown-menu .ant-dropdown-menu-item {
+      color: #490b3d !important;
+  }
+
+  .product-card{
+    width: 90%;
+  }
+
+  .shop-items{
+    margin-top: 20%;
+  }
+
 }
