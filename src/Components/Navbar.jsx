@@ -5,6 +5,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { Menu,ConfigProvider, Dropdown,Space } from 'antd';
 import {MenuOutlined} from '@ant-design/icons'
+import Logo from './Logo';
 
 const Navbar = () => {
   const cartList=useSelector(store=>store.cartState.cartList)
@@ -26,7 +27,9 @@ const Navbar = () => {
 
   return (
     <div className='navbar'> 
-      <div className="navbar-box">
+
+        <Logo />
+
         <div className='navbar-menu'>
           <ConfigProvider 
             theme={{
@@ -64,7 +67,7 @@ const Navbar = () => {
           </Link>
         </div>    
 
-      </div>
+  
     </div>
   )
 }
