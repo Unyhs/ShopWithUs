@@ -7,7 +7,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const productFetch=createAsyncThunk('productfetchThunk',async ()=>{
     try{
-    const res= await axios.get('/api/products')
+    const res= await axios.get('https://fakestoreapi.com/products')
     return res.data
     }
     catch(err)
